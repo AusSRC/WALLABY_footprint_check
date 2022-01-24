@@ -1,0 +1,593 @@
+Jan-17 04:59:19.169 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -params-file /mnt/shared/home/ashen/runs/params_source_finding.yaml
+Jan-17 04:59:19.421 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+Jan-17 04:59:19.585 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [goofy_yalow] - revision: d1ffd71127
+Jan-17 04:59:19.616 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /mnt/shared/wallaby/apps/WALLABY_workflow/nextflow.config
+Jan-17 04:59:19.619 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/shared/wallaby/apps/WALLABY_workflow/nextflow.config
+Jan-17 04:59:19.962 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jan-17 04:59:21.739 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/shared/home/ashen/.nextflow/plugins
+Jan-17 04:59:21.746 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jan-17 04:59:21.749 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Jan-17 04:59:21.765 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jan-17 04:59:21.769 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jan-17 04:59:21.777 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jan-17 04:59:21.828 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jan-17 04:59:21.998 [main] DEBUG nextflow.Session - Session uuid: f8aacafd-e301-413d-a917-592545e87228
+Jan-17 04:59:22.000 [main] DEBUG nextflow.Session - Run name: goofy_yalow
+Jan-17 04:59:22.003 [main] DEBUG nextflow.Session - Executor pool size: 16
+Jan-17 04:59:22.572 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC 
+  System: Linux 5.4.0-81-generic
+  Runtime: Groovy 3.0.7 on OpenJDK 64-Bit Server VM 11.0.12+7
+  Encoding: UTF-8 (UTF-8)
+  Process: 2290359@slurm-head.novalocal [192.168.0.145]
+  CPUs: 16 - Mem: 62.8 GB (59.1 GB) - Swap: 0 (0)
+Jan-17 04:59:22.803 [main] DEBUG nextflow.Session - Work-dir: /mnt/shared/wallaby/apps/WALLABY_workflow/work [fhgfs]
+Jan-17 04:59:22.806 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/shared/wallaby/apps/WALLABY_workflow/bin
+Jan-17 04:59:22.889 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jan-17 04:59:22.918 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jan-17 04:59:23.541 [main] DEBUG nextflow.Session - Session start invoked
+Jan-17 04:59:24.144 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jan-17 04:59:24.684 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: get_parameter_files, credentials, sofia, s2p_setup, pre_run_dependency_check, sofiax
+Jan-17 04:59:24.781 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jan-17 04:59:24.783 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jan-17 04:59:24.812 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jan-17 04:59:24.835 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jan-17 04:59:24.843 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jan-17 04:59:25.089 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jan-17 04:59:25.091 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jan-17 04:59:25.155 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jan-17 04:59:25.157 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jan-17 04:59:25.163 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jan-17 04:59:25.164 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jan-17 04:59:25.169 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jan-17 04:59:25.175 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=16; memory=62.8 GB; capacity=16; pollInterval=100ms; dumpInterval=5m
+Jan-17 04:59:25.228 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jan-17 04:59:25.230 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jan-17 04:59:25.244 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jan-17 04:59:25.246 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jan-17 04:59:25.253 [main] DEBUG nextflow.Session - Ignite dataflow network (6)
+Jan-17 04:59:25.255 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > source_finding:pre_run_dependency_check
+Jan-17 04:59:25.257 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > source_finding:s2p_setup
+Jan-17 04:59:25.260 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > source_finding:credentials
+Jan-17 04:59:25.263 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > source_finding:get_parameter_files
+Jan-17 04:59:25.266 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > source_finding:sofia
+Jan-17 04:59:25.268 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > source_finding:sofiax
+Jan-17 04:59:25.270 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jan-17 04:59:25.272 [main] DEBUG nextflow.Session - Session await
+Jan-17 04:59:25.876 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:pre_run_dependency_check > jobId: 11433; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/19/2c6526a42e35b104d009c7369098f1
+Jan-17 04:59:25.898 [Task submitter] INFO  nextflow.Session - [19/2c6526] Submitted process > source_finding:pre_run_dependency_check
+Jan-17 04:59:29.941 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11433; id: 1; name: source_finding:pre_run_dependency_check; status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/19/2c6526a42e35b104d009c7369098f1 started: 1642395569926; exited: 2022-01-17T04:59:26Z; ]
+Jan-17 04:59:30.100 [Actor Thread 3] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://aussrc/s2p_setup:v0.1.2; path=/mnt/shared/wallaby/apps/singularity/aussrc-s2p_setup-v0.1.2.img
+Jan-17 04:59:30.237 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:s2p_setup > jobId: 11434; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f4/baa8440af85779f7b27b75b3196a8f
+Jan-17 04:59:30.239 [Task submitter] INFO  nextflow.Session - [f4/baa844] Submitted process > source_finding:s2p_setup
+Jan-17 04:59:34.869 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11434; id: 2; name: source_finding:s2p_setup; status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f4/baa8440af85779f7b27b75b3196a8f started: 1642395574858; exited: 2022-01-17T04:59:34Z; ]
+Jan-17 04:59:34.882 [Actor Thread 3] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://aussrc/wallaby_scripts:latest; path=/mnt/shared/wallaby/apps/singularity/aussrc-wallaby_scripts-latest.img
+Jan-17 04:59:35.060 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:credentials > jobId: 11435; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/33/a525e4d2e54b81662193d328b299ac
+Jan-17 04:59:35.062 [Task submitter] INFO  nextflow.Session - [33/a525e4] Submitted process > source_finding:credentials
+Jan-17 04:59:39.867 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11435; id: 3; name: source_finding:credentials; status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/33/a525e4d2e54b81662193d328b299ac started: 1642395579858; exited: 2022-01-17T04:59:37Z; ]
+Jan-17 04:59:39.930 [Task submitter] INFO  nextflow.Session - [32/517966] Submitted process > source_finding:get_parameter_files
+Jan-17 04:59:40.056 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: source_finding:get_parameter_files; status: COMPLETED; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/32/517966cf9b6d2aa156de76e7c37213]
+Jan-17 04:59:40.110 [Actor Thread 1] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://astroaustin/sofia:v0.0.1c; path=/mnt/shared/wallaby/apps/singularity/astroaustin-sofia-v0.0.1c.img
+Jan-17 04:59:40.178 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (16) > jobId: 11436; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c
+Jan-17 04:59:40.180 [Task submitter] INFO  nextflow.Session - [ed/e5caea] Submitted process > source_finding:sofia (16)
+Jan-17 04:59:40.214 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (5) > jobId: 11437; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53
+Jan-17 04:59:40.217 [Task submitter] INFO  nextflow.Session - [ab/83e7f7] Submitted process > source_finding:sofia (5)
+Jan-17 04:59:40.259 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (14) > jobId: 11438; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884
+Jan-17 04:59:40.261 [Task submitter] INFO  nextflow.Session - [c9/6b5f48] Submitted process > source_finding:sofia (14)
+Jan-17 04:59:40.291 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (1) > jobId: 11439; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4
+Jan-17 04:59:40.294 [Task submitter] INFO  nextflow.Session - [51/696f70] Submitted process > source_finding:sofia (1)
+Jan-17 04:59:40.326 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (2) > jobId: 11440; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962
+Jan-17 04:59:40.329 [Task submitter] INFO  nextflow.Session - [29/64875a] Submitted process > source_finding:sofia (2)
+Jan-17 04:59:40.356 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (8) > jobId: 11441; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d
+Jan-17 04:59:40.358 [Task submitter] INFO  nextflow.Session - [f3/4117ba] Submitted process > source_finding:sofia (8)
+Jan-17 04:59:40.391 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (7) > jobId: 11442; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15
+Jan-17 04:59:40.394 [Task submitter] INFO  nextflow.Session - [0e/d18bbb] Submitted process > source_finding:sofia (7)
+Jan-17 04:59:40.424 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (10) > jobId: 11443; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72
+Jan-17 04:59:40.426 [Task submitter] INFO  nextflow.Session - [b3/8d394f] Submitted process > source_finding:sofia (10)
+Jan-17 04:59:40.453 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (9) > jobId: 11444; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3
+Jan-17 04:59:40.455 [Task submitter] INFO  nextflow.Session - [15/b9590d] Submitted process > source_finding:sofia (9)
+Jan-17 04:59:40.486 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (3) > jobId: 11445; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0
+Jan-17 04:59:40.488 [Task submitter] INFO  nextflow.Session - [99/2af46f] Submitted process > source_finding:sofia (3)
+Jan-17 04:59:40.518 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (12) > jobId: 11446; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/65/68ed6ddc449734c0669babb6928d3b
+Jan-17 04:59:40.520 [Task submitter] INFO  nextflow.Session - [65/68ed6d] Submitted process > source_finding:sofia (12)
+Jan-17 04:59:40.549 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (11) > jobId: 11447; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/48/aa113c1d4e7eafb45a718a8c3c3fd5
+Jan-17 04:59:40.552 [Task submitter] INFO  nextflow.Session - [48/aa113c] Submitted process > source_finding:sofia (11)
+Jan-17 04:59:40.584 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (13) > jobId: 11448; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/63/e05962f855aeb64c628b0d128e31c4
+Jan-17 04:59:40.587 [Task submitter] INFO  nextflow.Session - [63/e05962] Submitted process > source_finding:sofia (13)
+Jan-17 04:59:40.623 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (15) > jobId: 11449; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/48/5158b6f509a5beb6830e4c04d55d3e
+Jan-17 04:59:40.625 [Task submitter] INFO  nextflow.Session - [48/5158b6] Submitted process > source_finding:sofia (15)
+Jan-17 04:59:40.657 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (4) > jobId: 11450; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/22/db1d719dbdd778005d15790099615f
+Jan-17 04:59:40.659 [Task submitter] INFO  nextflow.Session - [22/db1d71] Submitted process > source_finding:sofia (4)
+Jan-17 04:59:40.686 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (20) > jobId: 11451; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/bf/f1de1125f637710a0407d4f5fbc825
+Jan-17 04:59:40.688 [Task submitter] INFO  nextflow.Session - [bf/f1de11] Submitted process > source_finding:sofia (20)
+Jan-17 04:59:40.719 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (19) > jobId: 11452; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/78/c34b820246a5b3c147190047ed751b
+Jan-17 04:59:40.721 [Task submitter] INFO  nextflow.Session - [78/c34b82] Submitted process > source_finding:sofia (19)
+Jan-17 04:59:40.750 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (18) > jobId: 11453; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/93/72e5386e167c8975c154995ee056f2
+Jan-17 04:59:40.753 [Task submitter] INFO  nextflow.Session - [93/72e538] Submitted process > source_finding:sofia (18)
+Jan-17 04:59:40.781 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (24) > jobId: 11454; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/60f48e8d6b4499a979873ad2a720da
+Jan-17 04:59:40.783 [Task submitter] INFO  nextflow.Session - [c2/60f48e] Submitted process > source_finding:sofia (24)
+Jan-17 04:59:40.812 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (21) > jobId: 11455; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/5e54ca033f177d61d60bf56584927b
+Jan-17 04:59:40.814 [Task submitter] INFO  nextflow.Session - [c2/5e54ca] Submitted process > source_finding:sofia (21)
+Jan-17 04:59:40.845 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (22) > jobId: 11456; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/93/0669c317e4a2cc21f32efc4b9159f8
+Jan-17 04:59:40.848 [Task submitter] INFO  nextflow.Session - [93/0669c3] Submitted process > source_finding:sofia (22)
+Jan-17 04:59:40.877 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (17) > jobId: 11457; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/dc/924523741476908d2ad923e698868c
+Jan-17 04:59:40.879 [Task submitter] INFO  nextflow.Session - [dc/924523] Submitted process > source_finding:sofia (17)
+Jan-17 04:59:40.908 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (23) > jobId: 11458; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/58/f7e4b140c0ba72de5d07cdf07b7fac
+Jan-17 04:59:40.911 [Task submitter] INFO  nextflow.Session - [58/f7e4b1] Submitted process > source_finding:sofia (23)
+Jan-17 04:59:40.940 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (25) > jobId: 11459; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f6/b5208296d7d96a9f3157b5d9ac9a21
+Jan-17 04:59:40.942 [Task submitter] INFO  nextflow.Session - [f6/b52082] Submitted process > source_finding:sofia (25)
+Jan-17 04:59:40.968 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (28) > jobId: 11460; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/5a/11d671d5a215568e0c2bce538845ab
+Jan-17 04:59:40.970 [Task submitter] INFO  nextflow.Session - [5a/11d671] Submitted process > source_finding:sofia (28)
+Jan-17 04:59:41.000 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (29) > jobId: 11461; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7d/952ff120a45ea138752c983ba7f78d
+Jan-17 04:59:41.002 [Task submitter] INFO  nextflow.Session - [7d/952ff1] Submitted process > source_finding:sofia (29)
+Jan-17 04:59:41.039 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (26) > jobId: 11462; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/5e/0ff58ab779881f05a2345d5a7054b6
+Jan-17 04:59:41.041 [Task submitter] INFO  nextflow.Session - [5e/0ff58a] Submitted process > source_finding:sofia (26)
+Jan-17 04:59:41.069 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (30) > jobId: 11463; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099
+Jan-17 04:59:41.071 [Task submitter] INFO  nextflow.Session - [ea/c4f156] Submitted process > source_finding:sofia (30)
+Jan-17 04:59:41.097 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (6) > jobId: 11464; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f
+Jan-17 04:59:41.099 [Task submitter] INFO  nextflow.Session - [df/a6e4bb] Submitted process > source_finding:sofia (6)
+Jan-17 04:59:41.126 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (43) > jobId: 11465; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d
+Jan-17 04:59:41.128 [Task submitter] INFO  nextflow.Session - [ea/8d02cc] Submitted process > source_finding:sofia (43)
+Jan-17 04:59:41.152 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (32) > jobId: 11466; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8
+Jan-17 04:59:41.153 [Task submitter] INFO  nextflow.Session - [11/421a2d] Submitted process > source_finding:sofia (32)
+Jan-17 04:59:41.179 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (27) > jobId: 11467; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e
+Jan-17 04:59:41.181 [Task submitter] INFO  nextflow.Session - [44/e58a34] Submitted process > source_finding:sofia (27)
+Jan-17 04:59:41.209 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (31) > jobId: 11468; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f
+Jan-17 04:59:41.211 [Task submitter] INFO  nextflow.Session - [2b/22e90a] Submitted process > source_finding:sofia (31)
+Jan-17 04:59:41.239 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (33) > jobId: 11469; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb
+Jan-17 04:59:41.241 [Task submitter] INFO  nextflow.Session - [45/e4ffa9] Submitted process > source_finding:sofia (33)
+Jan-17 04:59:41.267 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (34) > jobId: 11470; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747
+Jan-17 04:59:41.269 [Task submitter] INFO  nextflow.Session - [7f/72eda5] Submitted process > source_finding:sofia (34)
+Jan-17 04:59:41.298 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (37) > jobId: 11471; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5
+Jan-17 04:59:41.300 [Task submitter] INFO  nextflow.Session - [b5/4d7369] Submitted process > source_finding:sofia (37)
+Jan-17 04:59:41.357 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (36) > jobId: 11472; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a
+Jan-17 04:59:41.359 [Task submitter] INFO  nextflow.Session - [37/732df2] Submitted process > source_finding:sofia (36)
+Jan-17 04:59:41.394 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (35) > jobId: 11473; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1e/1806ea18f1efbb9648cfe81827d389
+Jan-17 04:59:41.396 [Task submitter] INFO  nextflow.Session - [1e/1806ea] Submitted process > source_finding:sofia (35)
+Jan-17 04:59:41.425 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (38) > jobId: 11474; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f7/855a84f174c37d0946f84392d151a1
+Jan-17 04:59:41.427 [Task submitter] INFO  nextflow.Session - [f7/855a84] Submitted process > source_finding:sofia (38)
+Jan-17 04:59:41.453 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (40) > jobId: 11475; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/28/165ddce90aad0563bbbe12750c2668
+Jan-17 04:59:41.455 [Task submitter] INFO  nextflow.Session - [28/165ddc] Submitted process > source_finding:sofia (40)
+Jan-17 04:59:41.483 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (41) > jobId: 11476; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/81/caa12e69c8b49cf4e81c964c014e26
+Jan-17 04:59:41.485 [Task submitter] INFO  nextflow.Session - [81/caa12e] Submitted process > source_finding:sofia (41)
+Jan-17 04:59:41.511 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (45) > jobId: 11477; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ee/f355b3e619f02a9ea7813d73f27b47
+Jan-17 04:59:41.513 [Task submitter] INFO  nextflow.Session - [ee/f355b3] Submitted process > source_finding:sofia (45)
+Jan-17 04:59:41.538 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (44) > jobId: 11478; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/e7/d72e446eeead974b8a4c01197e1557
+Jan-17 04:59:41.540 [Task submitter] INFO  nextflow.Session - [e7/d72e44] Submitted process > source_finding:sofia (44)
+Jan-17 04:59:41.568 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (39) > jobId: 11479; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/82/7d91c03776130b5b7f1f46e663c7af
+Jan-17 04:59:41.570 [Task submitter] INFO  nextflow.Session - [82/7d91c0] Submitted process > source_finding:sofia (39)
+Jan-17 04:59:41.597 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofia (42) > jobId: 11480; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/03/6b456d11c2a37a82fb6eda7e14b2be
+Jan-17 04:59:41.599 [Task submitter] INFO  nextflow.Session - [03/6b456d] Submitted process > source_finding:sofia (42)
+Jan-17 05:04:25.411 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:04:29.919 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:09:25.348 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:09:29.962 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:14:25.357 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:14:29.995 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:19:25.448 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:19:30.035 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:24:25.502 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:24:30.063 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:29:25.540 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:29:30.110 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:34:25.587 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:34:30.156 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 45 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: -; ]
+~> TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: -; ]
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: -; ]
+~> TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: -; ]
+~> TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: -; ]
+~> TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: -; ]
+~> TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: -; ]
+~> TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: -; ]
+~> TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: -; ]
+~> TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:37:05.365 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11442; id: 11; name: source_finding:sofia (7); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0e/d18bbbdcbc905510b94d2d9780bb15 started: 1642395584924; exited: 2022-01-17T05:37:02Z; ]
+Jan-17 05:37:05.493 [Actor Thread 2] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://astroaustin/sofiax:v0.0.11e; path=/mnt/shared/wallaby/apps/singularity/astroaustin-sofiax-v0.0.11e.img
+Jan-17 05:37:05.501 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11450; id: 8; name: source_finding:sofia (4); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/22/db1d719dbdd778005d15790099615f started: 1642395584940; exited: 2022-01-17T05:37:03Z; ]
+Jan-17 05:37:05.973 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (2) > jobId: 11484; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/05/868361e6ec48026f78359bb4a1d9f1
+Jan-17 05:37:05.981 [Task submitter] INFO  nextflow.Session - [05/868361] Submitted process > source_finding:sofiax (2)
+Jan-17 05:37:06.123 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (1) > jobId: 11485; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/12/561f937e192afeea72945f9faeb129
+Jan-17 05:37:06.127 [Task submitter] INFO  nextflow.Session - [12/561f93] Submitted process > source_finding:sofiax (1)
+Jan-17 05:37:10.224 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11455; id: 25; name: source_finding:sofia (21); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/5e54ca033f177d61d60bf56584927b started: 1642395584952; exited: 2022-01-17T05:37:05Z; ]
+Jan-17 05:37:10.490 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (3) > jobId: 11486; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/65/433f6ccc31f241724c3c1f641e5a0b
+Jan-17 05:37:10.511 [Task submitter] INFO  nextflow.Session - [65/433f6c] Submitted process > source_finding:sofiax (3)
+Jan-17 05:37:15.206 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11436; id: 20; name: source_finding:sofia (16); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ed/e5caead30b0623757c279312a5722c started: 1642395584856; exited: 2022-01-17T05:37:15Z; ]
+Jan-17 05:37:15.252 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11460; id: 32; name: source_finding:sofia (28); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/5a/11d671d5a215568e0c2bce538845ab started: 1642395584962; exited: 2022-01-17T05:37:14Z; ]
+Jan-17 05:37:15.344 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (4) > jobId: 11487; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f1/c98d9b947faf15c96fe3a64d7f9978
+Jan-17 05:37:15.360 [Task submitter] INFO  nextflow.Session - [f1/c98d9b] Submitted process > source_finding:sofiax (4)
+Jan-17 05:37:15.450 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (5) > jobId: 11488; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/54/5c81d9258fd3522922d21a9f25baaa
+Jan-17 05:37:15.490 [Task submitter] INFO  nextflow.Session - [54/5c81d9] Submitted process > source_finding:sofiax (5)
+Jan-17 05:37:20.223 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11462; id: 30; name: source_finding:sofia (26); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/5e/0ff58ab779881f05a2345d5a7054b6 started: 1642395584966; exited: 2022-01-17T05:37:18Z; ]
+Jan-17 05:37:20.356 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (6) > jobId: 11489; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/a9/738d88da14cd9d57fa1ee0ef4827a7
+Jan-17 05:37:20.383 [Task submitter] INFO  nextflow.Session - [a9/738d88] Submitted process > source_finding:sofiax (6)
+Jan-17 05:37:40.207 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11437; id: 9; name: source_finding:sofia (5); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/83e7f79f61e60ed47101910308aa53 started: 1642395584913; exited: 2022-01-17T05:37:40Z; ]
+Jan-17 05:37:40.333 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11445; id: 7; name: source_finding:sofia (3); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/99/2af46f9c93845490105a80424b29d0 started: 1642395584930; exited: 2022-01-17T05:37:37Z; ]
+Jan-17 05:37:40.401 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (7) > jobId: 11490; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/cb/7a6fe19fb6d94ab5d83952a4ed60f3
+Jan-17 05:37:40.404 [Task submitter] INFO  nextflow.Session - [cb/7a6fe1] Submitted process > source_finding:sofiax (7)
+Jan-17 05:37:40.461 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (8) > jobId: 11491; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7c/c48adcacdabbb7d6ca8fbddcb9cf7e
+Jan-17 05:37:40.464 [Task submitter] INFO  nextflow.Session - [7c/c48adc] Submitted process > source_finding:sofiax (8)
+Jan-17 05:37:45.209 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11444; id: 13; name: source_finding:sofia (9); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/15/b9590da118cbae573c520cf7bd65d3 started: 1642395584928; exited: 2022-01-17T05:37:44Z; ]
+Jan-17 05:37:45.268 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11453; id: 22; name: source_finding:sofia (18); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/93/72e5386e167c8975c154995ee056f2 started: 1642395584949; exited: 2022-01-17T05:37:44Z; ]
+Jan-17 05:37:45.299 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (9) > jobId: 11492; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/9a/06e669635efca8c80721e9fe2a7a5e
+Jan-17 05:37:45.301 [Task submitter] INFO  nextflow.Session - [9a/06e669] Submitted process > source_finding:sofiax (9)
+Jan-17 05:37:45.312 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11458; id: 27; name: source_finding:sofia (23); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/58/f7e4b140c0ba72de5d07cdf07b7fac started: 1642395584958; exited: 2022-01-17T05:37:44Z; ]
+Jan-17 05:37:45.364 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (10) > jobId: 11493; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/89/5abfb76001f2eca6089f054e6f3257
+Jan-17 05:37:45.366 [Task submitter] INFO  nextflow.Session - [89/5abfb7] Submitted process > source_finding:sofiax (10)
+Jan-17 05:37:45.392 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (11) > jobId: 11494; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/fd/f71c93d7642da3953bf6a7904e47e7
+Jan-17 05:37:45.396 [Task submitter] INFO  nextflow.Session - [fd/f71c93] Submitted process > source_finding:sofiax (11)
+Jan-17 05:37:50.228 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11443; id: 14; name: source_finding:sofia (10); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b3/8d394fe3c66b3eabdbf6206000ff72 started: 1642395584926; exited: 2022-01-17T05:37:45Z; ]
+Jan-17 05:37:50.243 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11447; id: 15; name: source_finding:sofia (11); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/48/aa113c1d4e7eafb45a718a8c3c3fd5 started: 1642395584934; exited: 2022-01-17T05:37:49Z; ]
+Jan-17 05:37:50.258 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11448; id: 17; name: source_finding:sofia (13); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/63/e05962f855aeb64c628b0d128e31c4 started: 1642395584936; exited: 2022-01-17T05:37:46Z; ]
+Jan-17 05:37:50.310 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11457; id: 21; name: source_finding:sofia (17); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/dc/924523741476908d2ad923e698868c started: 1642395584956; exited: 2022-01-17T05:37:49Z; ]
+Jan-17 05:37:50.373 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (12) > jobId: 11495; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/60/e4593a6a4175c7710e03396d787073
+Jan-17 05:37:50.378 [Task submitter] INFO  nextflow.Session - [60/e4593a] Submitted process > source_finding:sofiax (12)
+Jan-17 05:37:50.430 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (13) > jobId: 11496; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/e4/1efdbbcfb8df10033bca6c793ba4ae
+Jan-17 05:37:50.434 [Task submitter] INFO  nextflow.Session - [e4/1efdbb] Submitted process > source_finding:sofiax (13)
+Jan-17 05:37:50.504 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (14) > jobId: 11497; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/5d/e7d6d4539130702d7ad7536c419663
+Jan-17 05:37:50.508 [Task submitter] INFO  nextflow.Session - [5d/e7d6d4] Submitted process > source_finding:sofiax (14)
+Jan-17 05:37:50.542 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (15) > jobId: 11498; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/72/15d2841b6b74cd41696c51047a6ca6
+Jan-17 05:37:50.546 [Task submitter] INFO  nextflow.Session - [72/15d284] Submitted process > source_finding:sofiax (15)
+Jan-17 05:37:55.206 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11440; id: 6; name: source_finding:sofia (2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/29/64875a8504a8d0adf65ca0cd4a3962 started: 1642395584920; exited: 2022-01-17T05:37:51Z; ]
+Jan-17 05:37:55.230 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11441; id: 12; name: source_finding:sofia (8); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f3/4117ba2f648d6fea6cf4ad2fdeab1d started: 1642395584922; exited: 2022-01-17T05:37:53Z; ]
+Jan-17 05:37:55.248 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11452; id: 23; name: source_finding:sofia (19); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/78/c34b820246a5b3c147190047ed751b started: 1642395584945; exited: 2022-01-17T05:37:50Z; ]
+Jan-17 05:37:55.267 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11454; id: 28; name: source_finding:sofia (24); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/60f48e8d6b4499a979873ad2a720da started: 1642395584951; exited: 2022-01-17T05:37:51Z; ]
+Jan-17 05:37:55.295 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11456; id: 26; name: source_finding:sofia (22); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/93/0669c317e4a2cc21f32efc4b9159f8 started: 1642395584954; exited: 2022-01-17T05:37:53Z; ]
+Jan-17 05:37:55.310 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (16) > jobId: 11499; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/e4/9b8c678e7b3a46005ebd93661d8370
+Jan-17 05:37:55.315 [Task submitter] INFO  nextflow.Session - [e4/9b8c67] Submitted process > source_finding:sofiax (16)
+Jan-17 05:37:55.384 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (17) > jobId: 11500; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/3a/c08e4af19ad749adf5c07b79661c1c
+Jan-17 05:37:55.386 [Task submitter] INFO  nextflow.Session - [3a/c08e4a] Submitted process > source_finding:sofiax (17)
+Jan-17 05:37:55.539 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (18) > jobId: 11501; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/81/27542716424e833416e193b35767a0
+Jan-17 05:37:55.570 [Task submitter] INFO  nextflow.Session - [81/275427] Submitted process > source_finding:sofiax (18)
+Jan-17 05:37:55.694 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (19) > jobId: 11502; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/90/ff07b79d5ce7224f56eec3e0c21973
+Jan-17 05:37:55.706 [Task submitter] INFO  nextflow.Session - [90/ff07b7] Submitted process > source_finding:sofiax (19)
+Jan-17 05:37:55.736 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (20) > jobId: 11503; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/4d/29c48da76a39cdc3a7735a7ef210cc
+Jan-17 05:37:55.758 [Task submitter] INFO  nextflow.Session - [4d/29c48d] Submitted process > source_finding:sofiax (20)
+Jan-17 05:38:00.207 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11439; id: 5; name: source_finding:sofia (1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/51/696f709a89eb9dc85c74908ab6e9b4 started: 1642395584918; exited: 2022-01-17T05:37:59Z; ]
+Jan-17 05:38:00.288 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (21) > jobId: 11504; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/01/8c58a20149a356d13f9e6109f09962
+Jan-17 05:38:00.299 [Task submitter] INFO  nextflow.Session - [01/8c58a2] Submitted process > source_finding:sofiax (21)
+Jan-17 05:38:10.212 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11459; id: 29; name: source_finding:sofia (25); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f6/b5208296d7d96a9f3157b5d9ac9a21 started: 1642395584960; exited: 2022-01-17T05:38:08Z; ]
+Jan-17 05:38:10.450 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (22) > jobId: 11505; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0b/3108066f46e8594d4d211993883d46
+Jan-17 05:38:10.480 [Task submitter] INFO  nextflow.Session - [0b/310806] Submitted process > source_finding:sofiax (22)
+Jan-17 05:38:20.208 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11446; id: 16; name: source_finding:sofia (12); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/65/68ed6ddc449734c0669babb6928d3b started: 1642395584932; exited: 2022-01-17T05:38:15Z; ]
+Jan-17 05:38:20.280 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11485; id: 50; name: source_finding:sofiax (1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/12/561f937e192afeea72945f9faeb129 started: 1642397875327; exited: 2022-01-17T05:38:19Z; ]
+Jan-17 05:38:20.428 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (23) > jobId: 11506; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/34/e2d776df1c889ae44c9a05b7bc8ba5
+Jan-17 05:38:20.460 [Task submitter] INFO  nextflow.Session - [34/e2d776] Submitted process > source_finding:sofiax (23)
+Jan-17 05:38:25.227 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11484; id: 51; name: source_finding:sofiax (2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/05/868361e6ec48026f78359bb4a1d9f1 started: 1642397875326; exited: 2022-01-17T05:38:24Z; ]
+Jan-17 05:38:40.231 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11490; id: 56; name: source_finding:sofiax (7); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/cb/7a6fe19fb6d94ab5d83952a4ed60f3 started: 1642397905263; exited: 2022-01-17T05:38:39Z; ]
+Jan-17 05:38:50.247 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11486; id: 52; name: source_finding:sofiax (3); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/65/433f6ccc31f241724c3c1f641e5a0b started: 1642397880250; exited: 2022-01-17T05:38:47Z; ]
+Jan-17 05:38:55.235 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11491; id: 57; name: source_finding:sofiax (8); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7c/c48adcacdabbb7d6ca8fbddcb9cf7e started: 1642397920242; exited: 2022-01-17T05:38:54Z; ]
+Jan-17 05:39:20.216 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11451; id: 24; name: source_finding:sofia (20); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/bf/f1de1125f637710a0407d4f5fbc825 started: 1642395584942; exited: 2022-01-17T05:39:17Z; ]
+Jan-17 05:39:20.353 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (24) > jobId: 11507; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/6f/1b898a38362f9e92a454637350544e
+Jan-17 05:39:20.355 [Task submitter] INFO  nextflow.Session - [6f/1b898a] Submitted process > source_finding:sofiax (24)
+Jan-17 05:39:25.218 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11449; id: 19; name: source_finding:sofia (15); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/48/5158b6f509a5beb6830e4c04d55d3e started: 1642395584938; exited: 2022-01-17T05:39:22Z; ]
+Jan-17 05:39:25.282 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (25) > jobId: 11508; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/53/a8770e7dfa3ab1bedd372924417e97
+Jan-17 05:39:25.284 [Task submitter] INFO  nextflow.Session - [53/a8770e] Submitted process > source_finding:sofiax (25)
+Jan-17 05:39:25.664 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:39:30.211 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 40 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: 2022-01-17T05:39:27Z; ]
+~> TaskHandler[jobId: 11461; id: 33; name: source_finding:sofia (29); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7d/952ff120a45ea138752c983ba7f78d started: 1642395584963; exited: -; ]
+~> TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: -; ]
+~> TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: -; ]
+~> TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: -; ]
+~> TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: -; ]
+~> TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: -; ]
+~> TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: -; ]
+~> TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: -; ]
+~> TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:39:30.221 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11438; id: 18; name: source_finding:sofia (14); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c9/6b5f48574e93e79dbf7eb59ecc5884 started: 1642395584916; exited: 2022-01-17T05:39:27Z; ]
+Jan-17 05:39:30.327 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (26) > jobId: 11509; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/70/1a927fb4a0cedee8c7967de0f38a3a
+Jan-17 05:39:30.330 [Task submitter] INFO  nextflow.Session - [70/1a927f] Submitted process > source_finding:sofiax (26)
+Jan-17 05:39:35.224 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11461; id: 33; name: source_finding:sofia (29); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7d/952ff120a45ea138752c983ba7f78d started: 1642395584963; exited: 2022-01-17T05:39:33Z; ]
+Jan-17 05:39:36.765 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (27) > jobId: 11510; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/08/0fc37534c931e40fbe858456f8aaa2
+Jan-17 05:39:36.779 [Task submitter] INFO  nextflow.Session - [08/0fc375] Submitted process > source_finding:sofiax (27)
+Jan-17 05:39:40.239 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11492; id: 58; name: source_finding:sofiax (9); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/9a/06e669635efca8c80721e9fe2a7a5e started: 1642397930260; exited: 2022-01-17T05:39:40Z; ]
+Jan-17 05:39:45.238 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11493; id: 59; name: source_finding:sofiax (10); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/89/5abfb76001f2eca6089f054e6f3257 started: 1642397935250; exited: 2022-01-17T05:39:44Z; ]
+Jan-17 05:39:45.257 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11496; id: 62; name: source_finding:sofiax (13); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/e4/1efdbbcfb8df10033bca6c793ba4ae started: 1642397970273; exited: 2022-01-17T05:39:42Z; ]
+Jan-17 05:39:50.264 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11487; id: 53; name: source_finding:sofiax (4); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f1/c98d9b947faf15c96fe3a64d7f9978 started: 1642397890265; exited: 2022-01-17T05:39:47Z; ]
+Jan-17 05:39:55.246 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11498; id: 64; name: source_finding:sofiax (15); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/72/15d2841b6b74cd41696c51047a6ca6 started: 1642397985264; exited: 2022-01-17T05:39:53Z; ]
+Jan-17 05:40:00.240 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11495; id: 61; name: source_finding:sofiax (12); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/60/e4593a6a4175c7710e03396d787073 started: 1642397965247; exited: 2022-01-17T05:39:57Z; ]
+Jan-17 05:40:10.243 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11488; id: 54; name: source_finding:sofiax (5); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/54/5c81d9258fd3522922d21a9f25baaa started: 1642397900305; exited: 2022-01-17T05:40:08Z; ]
+Jan-17 05:40:15.236 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11494; id: 60; name: source_finding:sofiax (11); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/fd/f71c93d7642da3953bf6a7904e47e7 started: 1642397960314; exited: 2022-01-17T05:40:11Z; ]
+Jan-17 05:40:30.238 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11497; id: 63; name: source_finding:sofiax (14); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/5d/e7d6d4539130702d7ad7536c419663 started: 1642397975255; exited: 2022-01-17T05:40:25Z; ]
+Jan-17 05:40:35.238 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11499; id: 65; name: source_finding:sofiax (16); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/e4/9b8c678e7b3a46005ebd93661d8370 started: 1642397985265; exited: 2022-01-17T05:40:33Z; ]
+Jan-17 05:40:45.240 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11489; id: 55; name: source_finding:sofiax (6); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/a9/738d88da14cd9d57fa1ee0ef4827a7 started: 1642397900306; exited: 2022-01-17T05:40:41Z; ]
+Jan-17 05:40:45.264 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11502; id: 68; name: source_finding:sofiax (19); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/90/ff07b79d5ce7224f56eec3e0c21973 started: 1642397995256; exited: 2022-01-17T05:40:42Z; ]
+Jan-17 05:40:50.254 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11500; id: 66; name: source_finding:sofiax (17); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/3a/c08e4af19ad749adf5c07b79661c1c started: 1642397985266; exited: 2022-01-17T05:40:49Z; ]
+Jan-17 05:41:40.246 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11509; id: 75; name: source_finding:sofiax (26); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/70/1a927fb4a0cedee8c7967de0f38a3a started: 1642398045279; exited: 2022-01-17T05:41:39Z; ]
+Jan-17 05:42:00.241 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11501; id: 67; name: source_finding:sofiax (18); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/81/27542716424e833416e193b35767a0 started: 1642397990296; exited: 2022-01-17T05:41:56Z; ]
+Jan-17 05:42:00.274 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11507; id: 73; name: source_finding:sofiax (24); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/6f/1b898a38362f9e92a454637350544e started: 1642398035258; exited: 2022-01-17T05:41:59Z; ]
+Jan-17 05:42:10.243 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11504; id: 70; name: source_finding:sofiax (21); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/01/8c58a20149a356d13f9e6109f09962 started: 1642398010263; exited: 2022-01-17T05:42:08Z; ]
+Jan-17 05:42:40.244 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11508; id: 74; name: source_finding:sofiax (25); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/53/a8770e7dfa3ab1bedd372924417e97 started: 1642398045278; exited: 2022-01-17T05:42:39Z; ]
+Jan-17 05:42:40.268 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11510; id: 76; name: source_finding:sofiax (27); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/08/0fc37534c931e40fbe858456f8aaa2 started: 1642398050281; exited: 2022-01-17T05:42:36Z; ]
+Jan-17 05:42:45.242 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11503; id: 69; name: source_finding:sofiax (20); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/4d/29c48da76a39cdc3a7735a7ef210cc started: 1642398000267; exited: 2022-01-17T05:42:42Z; ]
+Jan-17 05:42:50.261 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11505; id: 71; name: source_finding:sofiax (22); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/0b/3108066f46e8594d4d211993883d46 started: 1642398015263; exited: 2022-01-17T05:42:49Z; ]
+Jan-17 05:43:10.244 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11506; id: 72; name: source_finding:sofiax (23); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/34/e2d776df1c889ae44c9a05b7bc8ba5 started: 1642398030316; exited: 2022-01-17T05:43:05Z; ]
+Jan-17 05:44:25.670 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:44:30.240 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 18 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: -; ]
+~> TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: -; ]
+~> TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: -; ]
+~> TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: -; ]
+~> TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: -; ]
+~> TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: -; ]
+~> TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: -; ]
+~> TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: -; ]
+~> TaskHandler[jobId: 11471; id: 41; name: source_finding:sofia (37); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5 started: 1642397865328; exited: -; ]
+~> TaskHandler[jobId: 11472; id: 40; name: source_finding:sofia (36); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a started: 1642397865330; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:49:25.709 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:49:30.271 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 18 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: -; ]
+~> TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: -; ]
+~> TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: -; ]
+~> TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: -; ]
+~> TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: -; ]
+~> TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: -; ]
+~> TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: -; ]
+~> TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: -; ]
+~> TaskHandler[jobId: 11471; id: 41; name: source_finding:sofia (37); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5 started: 1642397865328; exited: -; ]
+~> TaskHandler[jobId: 11472; id: 40; name: source_finding:sofia (36); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a started: 1642397865330; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:54:25.774 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:54:30.300 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 18 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: -; ]
+~> TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: -; ]
+~> TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: -; ]
+~> TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: -; ]
+~> TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: -; ]
+~> TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: -; ]
+~> TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: -; ]
+~> TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: -; ]
+~> TaskHandler[jobId: 11471; id: 41; name: source_finding:sofia (37); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5 started: 1642397865328; exited: -; ]
+~> TaskHandler[jobId: 11472; id: 40; name: source_finding:sofia (36); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a started: 1642397865330; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 05:59:25.837 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 05:59:30.336 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 18 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: -; ]
+~> TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: -; ]
+~> TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: -; ]
+~> TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: -; ]
+~> TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: -; ]
+~> TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: -; ]
+~> TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: -; ]
+~> TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: -; ]
+~> TaskHandler[jobId: 11471; id: 41; name: source_finding:sofia (37); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5 started: 1642397865328; exited: -; ]
+~> TaskHandler[jobId: 11472; id: 40; name: source_finding:sofia (36); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a started: 1642397865330; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 06:04:25.868 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 06:04:30.369 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 18 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: -; ]
+~> TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: -; ]
+~> TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: -; ]
+~> TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: -; ]
+~> TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: -; ]
+~> TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: -; ]
+~> TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: -; ]
+~> TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: -; ]
+~> TaskHandler[jobId: 11471; id: 41; name: source_finding:sofia (37); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5 started: 1642397865328; exited: -; ]
+~> TaskHandler[jobId: 11472; id: 40; name: source_finding:sofia (36); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a started: 1642397865330; exited: -; ]
+.. remaining tasks omitted.
+Jan-17 06:06:20.388 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11466; id: 36; name: source_finding:sofia (32); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/11/421a2d100ad90ffe83ca69d36904b8 started: 1642397835313; exited: 2022-01-17T06:06:18Z; ]
+Jan-17 06:06:20.420 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11468; id: 35; name: source_finding:sofia (31); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/2b/22e90ae70d95eba09b10727a9fdf2f started: 1642397840311; exited: 2022-01-17T06:06:17Z; ]
+Jan-17 06:06:20.440 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11478; id: 48; name: source_finding:sofia (44); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/e7/d72e446eeead974b8a4c01197e1557 started: 1642397875320; exited: 2022-01-17T06:06:20Z; ]
+Jan-17 06:06:20.526 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (28) > jobId: 11511; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/01/c6cf80289364677d5b24aab39e2c01
+Jan-17 06:06:20.529 [Task submitter] INFO  nextflow.Session - [01/c6cf80] Submitted process > source_finding:sofiax (28)
+Jan-17 06:06:20.605 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (29) > jobId: 11512; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/17/699599d7558b842b4cb294d6039915
+Jan-17 06:06:20.609 [Task submitter] INFO  nextflow.Session - [17/699599] Submitted process > source_finding:sofiax (29)
+Jan-17 06:06:20.639 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (30) > jobId: 11513; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/1d83fa878dcc2899b7f4bc5ce9259f
+Jan-17 06:06:20.642 [Task submitter] INFO  nextflow.Session - [ab/1d83fa] Submitted process > source_finding:sofiax (30)
+Jan-17 06:06:25.380 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11463; id: 34; name: source_finding:sofia (30); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/c4f1561ed18c761318e215aefd7099 started: 1642397825654; exited: 2022-01-17T06:06:22Z; ]
+Jan-17 06:06:25.425 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11475; id: 44; name: source_finding:sofia (40); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/28/165ddce90aad0563bbbe12750c2668 started: 1642397870330; exited: 2022-01-17T06:06:25Z; ]
+Jan-17 06:06:25.469 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (31) > jobId: 11514; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/25/8117d95048a061af14f9cb51cadf50
+Jan-17 06:06:25.472 [Task submitter] INFO  nextflow.Session - [25/8117d9] Submitted process > source_finding:sofiax (31)
+Jan-17 06:06:25.522 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (32) > jobId: 11515; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/c342ba755fc5b17636710d7af95101
+Jan-17 06:06:25.525 [Task submitter] INFO  nextflow.Session - [44/c342ba] Submitted process > source_finding:sofiax (32)
+Jan-17 06:06:50.414 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11511; id: 77; name: source_finding:sofiax (28); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/01/c6cf80289364677d5b24aab39e2c01 started: 1642399585435; exited: 2022-01-17T06:06:48Z; ]
+Jan-17 06:07:00.393 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11512; id: 78; name: source_finding:sofiax (29); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/17/699599d7558b842b4cb294d6039915 started: 1642399585437; exited: 2022-01-17T06:06:56Z; ]
+Jan-17 06:07:05.395 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11513; id: 79; name: source_finding:sofiax (30); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ab/1d83fa878dcc2899b7f4bc5ce9259f started: 1642399585438; exited: 2022-01-17T06:07:03Z; ]
+Jan-17 06:07:20.392 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11514; id: 80; name: source_finding:sofiax (31); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/25/8117d95048a061af14f9cb51cadf50 started: 1642399590397; exited: 2022-01-17T06:07:17Z; ]
+Jan-17 06:07:35.397 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11515; id: 81; name: source_finding:sofiax (32); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/c342ba755fc5b17636710d7af95101 started: 1642399590398; exited: 2022-01-17T06:07:34Z; ]
+Jan-17 06:08:10.384 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11465; id: 47; name: source_finding:sofia (43); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ea/8d02ccec3edc58cc5f16422592986d started: 1642397830251; exited: 2022-01-17T06:08:08Z; ]
+Jan-17 06:08:10.458 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11471; id: 41; name: source_finding:sofia (37); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b5/4d73693b5c1ee81efac880eeed15b5 started: 1642397865328; exited: 2022-01-17T06:08:09Z; ]
+Jan-17 06:08:10.492 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (33) > jobId: 11516; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/58f566505dcb4ff4ebfbccf251dcdd
+Jan-17 06:08:10.494 [Task submitter] INFO  nextflow.Session - [45/58f566] Submitted process > source_finding:sofiax (33)
+Jan-17 06:08:10.545 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (34) > jobId: 11517; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1b/97d909c3ba818161ded5c9e3678730
+Jan-17 06:08:10.547 [Task submitter] INFO  nextflow.Session - [1b/97d909] Submitted process > source_finding:sofiax (34)
+Jan-17 06:08:15.383 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11464; id: 10; name: source_finding:sofia (6); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/df/a6e4bb407c0eb7184df293b2639d1f started: 1642397825656; exited: 2022-01-17T06:08:12Z; ]
+Jan-17 06:08:15.415 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11469; id: 37; name: source_finding:sofia (33); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/e4ffa9d6cf0053b118250325569ebb started: 1642397860354; exited: 2022-01-17T06:08:13Z; ]
+Jan-17 06:08:15.430 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11477; id: 49; name: source_finding:sofia (45); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ee/f355b3e619f02a9ea7813d73f27b47 started: 1642397870332; exited: 2022-01-17T06:08:12Z; ]
+Jan-17 06:08:15.460 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11480; id: 46; name: source_finding:sofia (42); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/03/6b456d11c2a37a82fb6eda7e14b2be started: 1642397875324; exited: 2022-01-17T06:08:12Z; ]
+Jan-17 06:08:15.479 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (35) > jobId: 11518; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/75/638df2e8ac1d540cf851f49bd8d6b1
+Jan-17 06:08:15.480 [Task submitter] INFO  nextflow.Session - [75/638df2] Submitted process > source_finding:sofiax (35)
+Jan-17 06:08:15.525 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (36) > jobId: 11519; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/86/791f464395706ee2050b93e6a5a203
+Jan-17 06:08:15.527 [Task submitter] INFO  nextflow.Session - [86/791f46] Submitted process > source_finding:sofiax (36)
+Jan-17 06:08:15.585 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (37) > jobId: 11520; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ef/092509c09bb4cf19571dd94f1cef3b
+Jan-17 06:08:15.587 [Task submitter] INFO  nextflow.Session - [ef/092509] Submitted process > source_finding:sofiax (37)
+Jan-17 06:08:15.635 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (38) > jobId: 11521; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/3f/1664e2198b267300bfa80abb5982cb
+Jan-17 06:08:15.637 [Task submitter] INFO  nextflow.Session - [3f/1664e2] Submitted process > source_finding:sofiax (38)
+Jan-17 06:08:25.387 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11516; id: 82; name: source_finding:sofiax (33); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/45/58f566505dcb4ff4ebfbccf251dcdd started: 1642399695510; exited: 2022-01-17T06:08:21Z; ]
+Jan-17 06:08:30.385 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11473; id: 39; name: source_finding:sofia (35); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1e/1806ea18f1efbb9648cfe81827d389 started: 1642397865331; exited: 2022-01-17T06:08:28Z; ]
+Jan-17 06:08:30.403 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11519; id: 85; name: source_finding:sofiax (36); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/86/791f464395706ee2050b93e6a5a203 started: 1642399700386; exited: 2022-01-17T06:08:26Z; ]
+Jan-17 06:08:30.414 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11520; id: 86; name: source_finding:sofiax (37); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/ef/092509c09bb4cf19571dd94f1cef3b started: 1642399700387; exited: 2022-01-17T06:08:27Z; ]
+Jan-17 06:08:30.424 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11521; id: 87; name: source_finding:sofiax (38); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/3f/1664e2198b267300bfa80abb5982cb started: 1642399700389; exited: 2022-01-17T06:08:27Z; ]
+Jan-17 06:08:30.628 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (39) > jobId: 11522; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c4/0c8c89512e4339835d03062f0cbb54
+Jan-17 06:08:30.630 [Task submitter] INFO  nextflow.Session - [c4/0c8c89] Submitted process > source_finding:sofiax (39)
+Jan-17 06:08:35.392 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11517; id: 83; name: source_finding:sofiax (34); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1b/97d909c3ba818161ded5c9e3678730 started: 1642399695511; exited: 2022-01-17T06:08:31Z; ]
+Jan-17 06:08:40.384 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11467; id: 31; name: source_finding:sofia (27); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/44/e58a34b5c4fbfff77c57647e61654e started: 1642397835315; exited: 2022-01-17T06:08:37Z; ]
+Jan-17 06:08:40.441 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11470; id: 38; name: source_finding:sofia (34); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/7f/72eda5b4c46582d5f0f647a94bf747 started: 1642397860355; exited: 2022-01-17T06:08:35Z; ]
+Jan-17 06:08:40.472 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11472; id: 40; name: source_finding:sofia (36); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/37/732df2a538cde06c8052fd2513b39a started: 1642397865330; exited: 2022-01-17T06:08:36Z; ]
+Jan-17 06:08:40.496 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (40) > jobId: 11523; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1a/d02407a642e39cd426be41bf4e8f4d
+Jan-17 06:08:40.498 [Task submitter] INFO  nextflow.Session - [1a/d02407] Submitted process > source_finding:sofiax (40)
+Jan-17 06:08:40.523 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (42) > jobId: 11524; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/83/0cda0f8b5ef523db0fe319c014fe56
+Jan-17 06:08:40.524 [Task submitter] INFO  nextflow.Session - [83/0cda0f] Submitted process > source_finding:sofiax (42)
+Jan-17 06:08:40.582 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (41) > jobId: 11525; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/97/8834f4952e86b96da6c19242f1633c
+Jan-17 06:08:40.584 [Task submitter] INFO  nextflow.Session - [97/8834f4] Submitted process > source_finding:sofiax (41)
+Jan-17 06:08:45.385 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11476; id: 45; name: source_finding:sofia (41); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/81/caa12e69c8b49cf4e81c964c014e26 started: 1642397870331; exited: 2022-01-17T06:08:41Z; ]
+Jan-17 06:08:45.397 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11479; id: 43; name: source_finding:sofia (39); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/82/7d91c03776130b5b7f1f46e663c7af started: 1642397875322; exited: 2022-01-17T06:08:43Z; ]
+Jan-17 06:08:45.464 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (44) > jobId: 11526; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/46f3d8746a2d13c8dbb9bc9d8441b4
+Jan-17 06:08:45.466 [Task submitter] INFO  nextflow.Session - [c2/46f3d8] Submitted process > source_finding:sofiax (44)
+Jan-17 06:08:45.563 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (43) > jobId: 11527; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1c/4e6c950ba5258011383b9bc9f7e95f
+Jan-17 06:08:45.565 [Task submitter] INFO  nextflow.Session - [1c/4e6c95] Submitted process > source_finding:sofiax (43)
+Jan-17 06:09:05.392 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11525; id: 90; name: source_finding:sofiax (41); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/97/8834f4952e86b96da6c19242f1633c started: 1642399725422; exited: 2022-01-17T06:09:00Z; ]
+Jan-17 06:09:10.389 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11518; id: 84; name: source_finding:sofiax (35); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/75/638df2e8ac1d540cf851f49bd8d6b1 started: 1642399700384; exited: 2022-01-17T06:09:07Z; ]
+Jan-17 06:09:15.388 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11524; id: 91; name: source_finding:sofiax (42); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/83/0cda0f8b5ef523db0fe319c014fe56 started: 1642399725420; exited: 2022-01-17T06:09:11Z; ]
+Jan-17 06:09:25.881 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] source_finding:sofiax
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: parameter_file
+  port 1: (cntrl) -     ; channel: $
+
+Jan-17 06:09:30.386 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 5 -- submitted tasks are shown below
+~> TaskHandler[jobId: 11474; id: 42; name: source_finding:sofia (38); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f7/855a84f174c37d0946f84392d151a1 started: 1642397870328; exited: -; ]
+~> TaskHandler[jobId: 11522; id: 88; name: source_finding:sofiax (39); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c4/0c8c89512e4339835d03062f0cbb54 started: 1642399715402; exited: -; ]
+~> TaskHandler[jobId: 11523; id: 89; name: source_finding:sofiax (40); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1a/d02407a642e39cd426be41bf4e8f4d started: 1642399725417; exited: -; ]
+~> TaskHandler[jobId: 11526; id: 93; name: source_finding:sofiax (44); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/46f3d8746a2d13c8dbb9bc9d8441b4 started: 1642399730404; exited: -; ]
+~> TaskHandler[jobId: 11527; id: 92; name: source_finding:sofiax (43); status: RUNNING; exit: -; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1c/4e6c950ba5258011383b9bc9f7e95f started: 1642399730407; exited: -; ]
+Jan-17 06:09:35.397 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11523; id: 89; name: source_finding:sofiax (40); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1a/d02407a642e39cd426be41bf4e8f4d started: 1642399725417; exited: 2022-01-17T06:09:32Z; ]
+Jan-17 06:09:45.396 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11474; id: 42; name: source_finding:sofia (38); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/f7/855a84f174c37d0946f84392d151a1 started: 1642397870328; exited: 2022-01-17T06:09:44Z; ]
+Jan-17 06:09:45.505 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process source_finding:sofiax (45) > jobId: 11528; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b0/d14838b58e55c76ed5d5db7763f465
+Jan-17 06:09:45.507 [Task submitter] INFO  nextflow.Session - [b0/d14838] Submitted process > source_finding:sofiax (45)
+Jan-17 06:10:00.404 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11527; id: 92; name: source_finding:sofiax (43); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/1c/4e6c950ba5258011383b9bc9f7e95f started: 1642399730407; exited: 2022-01-17T06:09:59Z; ]
+Jan-17 06:10:05.399 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11526; id: 93; name: source_finding:sofiax (44); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c2/46f3d8746a2d13c8dbb9bc9d8441b4 started: 1642399730404; exited: 2022-01-17T06:10:02Z; ]
+Jan-17 06:10:05.411 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11528; id: 94; name: source_finding:sofiax (45); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/b0/d14838b58e55c76ed5d5db7763f465 started: 1642399790415; exited: 2022-01-17T06:10:02Z; ]
+Jan-17 06:10:10.398 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 11522; id: 88; name: source_finding:sofiax (39); status: COMPLETED; exit: 0; error: -; workDir: /mnt/shared/wallaby/apps/WALLABY_workflow/work/c4/0c8c89512e4339835d03062f0cbb54 started: 1642399715402; exited: 2022-01-17T06:10:06Z; ]
+Jan-17 06:10:10.408 [main] DEBUG nextflow.Session - Session await > all process finished
+Jan-17 06:10:15.388 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jan-17 06:10:15.458 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=94; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=1d 3h 2m 59s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=27; peakCpus=27; peakMemory=0; ]
+Jan-17 06:10:15.712 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Jan-17 06:10:15.777 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
