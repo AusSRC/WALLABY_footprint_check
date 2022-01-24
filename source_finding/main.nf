@@ -9,7 +9,8 @@ nextflow.enable.dsl = 2
 // Check dependencies for pipeline run
 process pre_run_dependency_check {
     input: 
-        val image_cube
+        val footprints
+        val weights
         val sofia_parameter_file
 
     output:
@@ -18,19 +19,13 @@ process pre_run_dependency_check {
     script:
         """
         #!/bin/bash
-        # Ensure working directory exists
-        [ ! -d ${params.WORKDIR}/${params.RUN_NAME} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}
-        # Ensure sofia output directory exists
-        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/outputs ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/outputs
-        # Ensure parameter file exists
-        [ ! -f ${params.SOFIA_PARAMETER_FILE} ] && \
-            { echo "Source finding parameter file (params.SOFIA_PARAMETER_FILE) not found"; exit 1; }
-        # Ensure s2p setup file exists
-        [ ! -f ${params.S2P_TEMPLATE} ] && \
-            { echo "Source finding s2p_setup template file (params.S2P_TEMPLATE) not found"; exit 1; }
-        # Ensure image cube file exists
-        [ ! -f ${params.IMAGE_CUBE} ] && \
-            { echo "Source finding image cube (params.IMAGE_CUBE) not found"; exit 1; }
+        # Ensure image cube exists
+        [ ! -f $footprints ] && \
+            { echo "Source finding image cube not found"; exit 1; }
+
+        # Ensure weights cube exists
+        [ ! -f $weights ] && \
+            { echo "Source finding weights cube not found"; exit 1; }
         exit 0
         """
 }
@@ -98,13 +93,14 @@ process sofia {
 
 workflow source_finding {
     take: 
-        footprint
+        footprints
+        weights
         sofia_parameter_file
 
     main:
-        pre_run_dependency_check(footprint, sofia_parameter_file)
-        s2p_setup(cube, sofia_parameter_file, pre_run_dependency_check.out.stdout)
-        get_parameter_files(credentials.out.sofiax_config)
+        pre_run_dependency_check(footprints, weights, sofia_parameter_file)
+        s2p_setup(footprints, sofia_parameter_file, pre_run_dependency_check.out.stdout)
+        get_parameter_files(s2p_setup.out.sofiax_config)
         sofia(get_parameter_files.out.parameter_files.flatten())
 }
 

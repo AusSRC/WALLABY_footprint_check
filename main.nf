@@ -10,5 +10,5 @@ workflow {
 
     main:
         download(sbid)
-        source_finding(download.out.footprint)
+        source_finding(download.out.footprints, download.out.weights, sofia_parameter_file)
 }

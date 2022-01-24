@@ -86,8 +86,8 @@ workflow download {
         get_downloaded_files(casda_download.out.stdout)
     
     emit:
-        footprint = get_downloaded_files.out.footprint
-        weight = get_downloaded_files.out.weight
+        footprints = get_downloaded_files.out.footprints
+        weights = get_downloaded_files.out.weights
 }
 
 // ----------------------------------------------------------------------------------------
