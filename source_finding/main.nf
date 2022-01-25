@@ -41,7 +41,7 @@ process s2p_setup {
         val check
 
     output:
-        val "${params.WORKDIR}/${params.RUN_NAME}/${params.SOFIAX_CONFIG_FILE}", emit: sofiax_config
+        stdout emit: stdout
 
     script:
         """
@@ -59,7 +59,7 @@ process get_parameter_files {
     executor = 'local'
 
     input:
-        val sofiax_config
+        val s2p_setup
 
     output:
         val parameter_files, emit: parameter_files
@@ -100,7 +100,7 @@ workflow source_finding {
     main:
         pre_run_dependency_check(footprints, weights, sofia_parameter_file)
         s2p_setup(footprints, sofia_parameter_file, pre_run_dependency_check.out.stdout)
-        get_parameter_files(s2p_setup.out.sofiax_config)
+        get_parameter_files(s2p_setup.out.stdout)
         sofia(get_parameter_files.out.parameter_files.flatten())
 }
 

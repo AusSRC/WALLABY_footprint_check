@@ -60,13 +60,17 @@ process casda_download {
 process get_downloaded_files {
     executor = 'local'
 
+    input:
+        val sbid
+        val casda_download
+
     output:
         val footprints, emit: footprints
         val weights, emit: weights
 
     exec:
-        footprints = "${params.WORKDIR}/${params.RUN_NAME}/image.restored.i.*.cube.contsub.fits"
-        weights = "${params.WORKDIR}/${params.RUN_NAME}/weights.i.*.cube.fits"
+        footprints = file("${params.WORKDIR}/${params.RUN_NAME}/image.restored.i.*$sbid*.cube*.fits").first()
+        weights = file("${params.WORKDIR}/${params.RUN_NAME}/weights.i.*$sbid*.cube.fits").first()
 }
 
 // ----------------------------------------------------------------------------------------
@@ -80,7 +84,7 @@ workflow download {
     main:
         pre_run_dependency_check()
         casda_download(sbid, pre_run_dependency_check.out.stdout)
-        get_downloaded_files(casda_download.out.stdout)
+        get_downloaded_files(sbid, casda_download.out.stdout)
     
     emit:
         footprints = get_downloaded_files.out.footprints
