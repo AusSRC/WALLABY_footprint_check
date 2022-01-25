@@ -60,16 +60,13 @@ process casda_download {
 process get_downloaded_files {
     executor = 'local'
 
-    input:
-        val casda_download
-
     output:
         val footprints, emit: footprints
         val weights, emit: weights
 
     exec:
-        footprints = file("${params.WORKDIR}/${params.RUN_NAME}/image.restored.i.*.cube.contsub.fits")
-        weights = file("${params.WORKDIR}/${params.RUN_NAME}/weights.i.*.cube.fits")
+        footprints = "${params.WORKDIR}/${params.RUN_NAME}/image.restored.i.*.cube.contsub.fits"
+        weights = "${params.WORKDIR}/${params.RUN_NAME}/weights.i.*.cube.fits"
 }
 
 // ----------------------------------------------------------------------------------------
