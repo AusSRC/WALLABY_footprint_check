@@ -87,6 +87,20 @@ process sofia {
         """
 }
 
+// Get output directory for moment 0 mosaicks
+process get_output_directory {
+    executor = 'local'
+
+    input:
+        val sofia
+
+    output:
+        val output_directory, emit: output_directory
+
+    exec:
+        output_directory = "${params.WORKDIR}/${params.OUTPUT_DIRECTORY}"
+}
+
 // ----------------------------------------------------------------------------------------
 // Workflow
 // ----------------------------------------------------------------------------------------
@@ -102,6 +116,9 @@ workflow source_finding {
         s2p_setup(footprints, sofia_parameter_file, pre_run_dependency_check.out.stdout)
         get_parameter_files(s2p_setup.out.stdout)
         sofia(get_parameter_files.out.parameter_files.flatten())
+    
+    emit:
+        output_directory = sofia.out.output_directory
 }
 
 // ----------------------------------------------------------------------------------------

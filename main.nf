@@ -3,6 +3,7 @@
 nextflow.enable.dsl = 2
 include { download } from './download/main'
 include { source_finding } from './source_finding/main'
+include { moment0 } from './moment0/main'
 
 workflow {
     sbid = "${params.SBID}"
@@ -11,4 +12,5 @@ workflow {
     main:
         download(sbid)
         source_finding(download.out.footprints, download.out.weights, sofia_parameter_file)
+        moment0(source_finding.out.output_directory)
 }
