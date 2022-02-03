@@ -17,9 +17,8 @@ process pre_run_dependency_check {
     script:
         """
         #!/bin/bash
-        # Ensure output directory exists
-        [ ! -f $footprints ] && \
-            { echo "Source finding image cube not found"; exit 1; }
+        # Ensure sofia output directory exists
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/outputs ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/outputs
 
         exit 0
         """
@@ -32,6 +31,7 @@ process mosaick {
 
     input:
         val output_directory
+        val output_file
         val check
 
     output:
@@ -40,7 +40,8 @@ process mosaick {
     script:
         """
         python3 -u /app/run_wallmerge.py \
-            $output_directory
+            $output_directory \
+            $output_file
         """
 }
 
@@ -51,11 +52,11 @@ process mosaick {
 workflow moment0 {
     take:
         output_directory
-        source_finding
+        output_file
 
     main:
         pre_run_dependency_check(output_directory)
-        mosaick(output_directory, pre_run_dependency_check.out.stdout)
+        mosaick(output_directory, output_file, pre_run_dependency_check.out.stdout)
 }
 
 // ----------------------------------------------------------------------------------------
