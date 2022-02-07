@@ -9,8 +9,7 @@ nextflow.enable.dsl = 2
 // Check dependencies for pipeline run
 process pre_run_dependency_check {
     input: 
-        val footprints
-        val weights
+        val footprint
         val sofia_parameter_file
 
     output:
@@ -20,12 +19,18 @@ process pre_run_dependency_check {
         """
         #!/bin/bash
         # Ensure image cube exists
-        [ ! -f $footprints ] && \
-            { echo "Source finding image cube not found"; exit 1; }
-
-        # Ensure weights cube exists
-        [ ! -f $weights ] && \
-            { echo "Source finding weights cube not found"; exit 1; }
+        [ ! -f $footprint ] && \
+            { echo "Source finding footprint not found"; exit 1; }
+        # Ensure working directory exists
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}
+        # Ensure sofia output directory exists
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
+        # Ensure parameter file exists
+        [ ! -f ${params.SOFIA_PARAMETER_FILE} ] && \
+            { echo "Source finding parameter file (params.SOFIA_PARAMETER_FILE) not found"; exit 1; }
+        # Ensure s2p setup file exists
+        [ ! -f ${params.S2P_TEMPLATE} ] && \
+            { echo "Source finding s2p_setup template file (params.S2P_TEMPLATE) not found"; exit 1; }
         exit 0
         """
 }
@@ -50,7 +55,8 @@ process s2p_setup {
             $image_cube_file \
             $sofia_parameter_file_template \
             ${params.RUN_NAME} \
-            ${params.WORKDIR}/${params.RUN_NAME}
+            ${params.WORKDIR}/${params.RUN_NAME} \
+            ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
         """
 }
 
@@ -77,7 +83,7 @@ process sofia {
         file parameter_file
 
     output:
-        path parameter_file, emit: parameter_file
+        stdout emit: stdout
 
     script:
         """
@@ -98,7 +104,7 @@ process get_output_directory {
         val output_directory, emit: output_directory
 
     exec:
-        output_directory = "${params.WORKDIR}/${params.OUTPUT_DIRECTORY}"
+        output_directory = "${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}"
 }
 
 // ----------------------------------------------------------------------------------------
@@ -107,18 +113,18 @@ process get_output_directory {
 
 workflow source_finding {
     take: 
-        footprints
-        weights
+        footprint
         sofia_parameter_file
 
     main:
-        pre_run_dependency_check(footprints, weights, sofia_parameter_file)
-        s2p_setup(footprints, sofia_parameter_file, pre_run_dependency_check.out.stdout)
+        pre_run_dependency_check(footprint, sofia_parameter_file)
+        s2p_setup(footprint, sofia_parameter_file, pre_run_dependency_check.out.stdout)
         get_parameter_files(s2p_setup.out.stdout)
         sofia(get_parameter_files.out.parameter_files.flatten())
+        get_output_directory(sofia.out.stdout.collect())
     
     emit:
-        output_directory = sofia.out.output_directory
+        output_directory = get_output_directory.out.output_directory
 }
 
 // ----------------------------------------------------------------------------------------
