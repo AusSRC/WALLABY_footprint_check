@@ -54,9 +54,8 @@ workflow download {
         sbid
 
     main:
-        // casda_download(sbid)
-        // get_downloaded_files(casda_download.out.stdout)
-        get_downloaded_files()
+        casda_download(sbid)
+        get_downloaded_files(casda_download.out.stdout)
     
     emit:
         footprints = get_downloaded_files.out.footprints
