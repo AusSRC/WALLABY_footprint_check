@@ -33,8 +33,8 @@ process casda_download {
 process get_downloaded_files {
     executor = 'local'
 
-    // input:
-    //     val casda_download
+    input:
+        val casda_download
 
     output:
         val footprints, emit: footprints
