@@ -9,7 +9,7 @@ nextflow.enable.dsl = 2
 // Check dependencies for pipeline run
 process pre_run_dependency_check {
     input: 
-        val footprint
+        file footprint
         val sofia_parameter_file
 
     output:
@@ -21,8 +21,6 @@ process pre_run_dependency_check {
         # Ensure image cube exists
         [ ! -f $footprint ] && \
             { echo "Source finding footprint not found"; exit 1; }
-        # Ensure working directory exists
-        [ ! -d ${params.WORKDIR}/${params.RUN_NAME} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}
         # Ensure sofia output directory exists
         [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
         # Ensure parameter file exists
@@ -41,7 +39,7 @@ process s2p_setup {
     containerOptions = '--bind /mnt/shared:/mnt/shared'
 
     input:
-        val image_cube_file
+        file image_cube_file
         val sofia_parameter_file_template
         val check
 
