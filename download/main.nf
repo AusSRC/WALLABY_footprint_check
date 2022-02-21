@@ -19,7 +19,7 @@ process casda_download {
 
     script:
         """
-        python3 -u /app/casda_download.py \
+        XDG_CACHE_HOME=${params.ASTROPY_CACHEDIR} python3 -u /app/casda_download.py \
             -i $sbid \
             -o ${params.WORKDIR}/${params.RUN_NAME} \
             -u '${params.CASDA_USERNAME}' \
