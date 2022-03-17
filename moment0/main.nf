@@ -18,7 +18,7 @@ process pre_run_dependency_check {
         """
         #!/bin/bash
         # Ensure sofia output directory exists
-        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && \
+        [ ! -d ${params.WORKDIR}/${params.SBID}/output ] && \
             { echo "Source finding products output directory does not exist."; exit 1; }
         exit 0
         """
@@ -40,7 +40,7 @@ process mosaick {
         """
         python3 -u /app/run_wallmerge.py \
             $output_directory \
-            ${params.WALLMERGE_OUTPUT}
+            ${params.WORKDIR}/${params.SBID}/output
         """
 }
 

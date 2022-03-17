@@ -14,7 +14,6 @@ In order to run the pipeline you will need to provide a parameter file that conf
 {
   # Require
   "SBIDS": "34166",
-  "RUN_NAME": "NGC5044_2",
   "WORKDIR": "/mnt/shared/home/ashen/runs",
   
   # Download credentials

@@ -21,7 +21,7 @@ process casda_download {
         """
         XDG_CACHE_HOME=${params.ASTROPY_CACHEDIR} python3 -u /app/casda_download.py \
             -i $sbid \
-            -o ${params.WORKDIR}/${params.RUN_NAME} \
+            -o ${params.WORKDIR}/${params.SBID} \
             -u '${params.CASDA_USERNAME}' \
             -p '${params.CASDA_PASSWORD}' \
             -q '${params.DOWNLOAD_QUERY}'
@@ -41,8 +41,8 @@ process get_downloaded_files {
         val weights, emit: weights
 
     exec:
-        footprints = file("${params.WORKDIR}/${params.RUN_NAME}/image.restored.i.*${params.SBID}*.cube.contsub.fits")
-        weights = file("${params.WORKDIR}/${params.RUN_NAME}/weights.i.*${params.SBID}*.cube.fits")
+        footprints = file("${params.WORKDIR}/${params.SBID}/image.restored.i.*${params.SBID}*.cube.contsub.fits")
+        weights = file("${params.WORKDIR}/${params.SBID}/weights.i.*${params.SBID}*.cube.fits")
 }
 
 // ----------------------------------------------------------------------------------------

@@ -22,7 +22,7 @@ process pre_run_dependency_check {
         [ ! -f $footprint ] && \
             { echo "Source finding footprint not found"; exit 1; }
         # Ensure sofia output directory exists
-        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
+        [ ! -d ${params.WORKDIR}/${params.SBID}/output ] && mkdir ${params.WORKDIR}/${params.SBID}/output
         # Ensure parameter file exists
         [ ! -f ${params.SOFIA_PARAMETER_FILE} ] && \
             { echo "Source finding parameter file (params.SOFIA_PARAMETER_FILE) not found"; exit 1; }
@@ -50,11 +50,11 @@ process s2p_setup {
         """
         python3 -u /app/s2p_setup.py \
             ${params.S2P_TEMPLATE} \
-            ${params.WORKDIR}/${params.RUN_NAME}/$image_cube_file \
+            ${params.WORKDIR}/${params.SBID}/$image_cube_file \
             $sofia_parameter_file_template \
-            ${params.RUN_NAME} \
-            ${params.WORKDIR}/${params.RUN_NAME} \
-            ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
+            ${params.SBID} \
+            ${params.WORKDIR}/${params.SBID} \
+            ${params.WORKDIR}/${params.SBID}/output
         """
 }
 
@@ -69,7 +69,7 @@ process get_parameter_files {
         val parameter_files, emit: parameter_files
 
     exec:
-        parameter_files = file("${params.WORKDIR}/${params.RUN_NAME}/sofia_*.par")
+        parameter_files = file("${params.WORKDIR}/${params.SBID}/sofia_*.par")
 }
 
 // Run source finding application (sofia)
@@ -102,7 +102,7 @@ process get_output_directory {
         val output_directory, emit: output_directory
 
     exec:
-        output_directory = "${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}"
+        output_directory = "${params.WORKDIR}/${params.SBID}/output"
 }
 
 // ----------------------------------------------------------------------------------------
