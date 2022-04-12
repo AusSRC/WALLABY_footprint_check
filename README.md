@@ -18,7 +18,7 @@ In order to run the pipeline you will need to provide a parameter file that conf
   
   # Download credentials
   "CASDA_USERNAME": "austin.shen@csiro.au",
-  "CASDA_PASSWORD": "Y*Q2wQb_C4w9s-b37D",
+  "CASDA_PASSWORD": "",
 
   # Source finding parameters
   "SOFIA_PARAMETER_FILE": "/mnt/shared/home/ashen/runs/sofia.par",
