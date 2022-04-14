@@ -27,7 +27,7 @@ process pre_run_dependency_check {
 // Create scripts for running SoFiA via SoFiAX
 process mosaick {
     container = params.WALLMERGE_IMAGE
-    containerOptions = '--bind /mnt/shared:/mnt/shared'
+    containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
 
     input:
         val output_directory

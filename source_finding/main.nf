@@ -38,7 +38,7 @@ process pre_run_dependency_check {
 // Create scripts for running SoFiA via SoFiAX
 process s2p_setup {
     container = params.S2P_IMAGE
-    containerOptions = '--bind /mnt/shared:/mnt/shared'
+    containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
 
     input:
         val image_cube_file
@@ -77,7 +77,7 @@ process get_parameter_files {
 // Run source finding application (sofia)
 process sofia {
     container = params.SOFIA_IMAGE
-    containerOptions = '--bind /mnt/shared:/mnt/shared'
+    containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
     
     input:
         file parameter_file
