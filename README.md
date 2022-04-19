@@ -40,5 +40,6 @@ There are additional optional configuration items that users may choose to chang
 * `SOFIA_PARAMETER_FILE` - `sofia` parameter file template
 * `S2P_TEMPLATE` - `s2p_setup` configuration file template
 * `OUTPUT_DIR` - output directory of source finding and `wallmerge` products
+* `WALLMERGE_OUTPUT` - output filename for mosaicked moment 0 map
 
 We don't recommend you change the default values for other parameters in the [`nextflow.config`](nextflow.config) as they relate to the execution environment.

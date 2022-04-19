@@ -40,7 +40,7 @@ process mosaick {
         """
         python3 -u /app/run_wallmerge.py \
             $output_directory \
-            ${params.WALLMERGE_OUTPUT}
+            ${params.WORKDIR}/${params.RUN_NAME}/${params.WALLMERGE_OUTPUT}
         """
 }
 
