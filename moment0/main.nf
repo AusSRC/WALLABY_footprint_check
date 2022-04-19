@@ -18,7 +18,7 @@ process pre_run_dependency_check {
         """
         #!/bin/bash
         # Ensure sofia output directory exists
-        [ ! -d ${params.WORKDIR}/${params.SBID}/output ] && \
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && \
             { echo "Source finding products output directory does not exist."; exit 1; }
         exit 0
         """

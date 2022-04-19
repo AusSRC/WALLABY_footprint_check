@@ -9,7 +9,7 @@ nextflow.enable.dsl = 2
 // Check dependencies for pipeline run
 process pre_run_dependency_check {
     input: 
-        file footprint
+        val footprint
         val sofia_parameter_file
 
     output:
@@ -21,8 +21,10 @@ process pre_run_dependency_check {
         # Ensure image cube exists
         [ ! -f $footprint ] && \
             { echo "Source finding footprint not found"; exit 1; }
+        # Ensure working directory exists
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}
         # Ensure sofia output directory exists
-        [ ! -d ${params.WORKDIR}/${params.SBID}/output ] && mkdir ${params.WORKDIR}/${params.SBID}/output
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
         # Ensure parameter file exists
         [ ! -f ${params.SOFIA_PARAMETER_FILE} ] && \
             { echo "Source finding parameter file (params.SOFIA_PARAMETER_FILE) not found"; exit 1; }
@@ -39,7 +41,7 @@ process s2p_setup {
     containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
 
     input:
-        file image_cube_file
+        val image_cube_file
         val sofia_parameter_file_template
         val check
 
@@ -50,11 +52,11 @@ process s2p_setup {
         """
         python3 -u /app/s2p_setup.py \
             ${params.S2P_TEMPLATE} \
-            ${params.WORKDIR}/${params.SBID}/$image_cube_file \
+            $image_cube_file \
             $sofia_parameter_file_template \
-            ${params.SBID} \
-            ${params.WORKDIR}/${params.SBID} \
-            ${params.WORKDIR}/${params.SBID}/output
+            ${params.RUN_NAME} \
+            ${params.WORKDIR}/${params.RUN_NAME} \
+            ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
         """
 }
 
@@ -69,7 +71,7 @@ process get_parameter_files {
         val parameter_files, emit: parameter_files
 
     exec:
-        parameter_files = file("${params.WORKDIR}/${params.SBID}/sofia_*.par")
+        parameter_files = file("${params.WORKDIR}/${params.RUN_NAME}/sofia_*.par")
 }
 
 // Run source finding application (sofia)
@@ -102,7 +104,7 @@ process get_output_directory {
         val output_directory, emit: output_directory
 
     exec:
-        output_directory = "${params.WORKDIR}/${params.SBID}/output"
+        output_directory = "${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}"
 }
 
 // ----------------------------------------------------------------------------------------
