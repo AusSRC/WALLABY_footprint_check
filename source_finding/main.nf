@@ -9,8 +9,7 @@ nextflow.enable.dsl = 2
 // Check dependencies for pipeline run
 process pre_run_dependency_check {
     input: 
-        val footprint
-        val sofia_parameter_file
+        val sbid
 
     output:
         stdout emit: stdout
@@ -18,13 +17,10 @@ process pre_run_dependency_check {
     script:
         """
         #!/bin/bash
-        # Ensure image cube exists
-        [ ! -f $footprint ] && \
-            { echo "Source finding footprint not found"; exit 1; }
         # Ensure working directory exists
         [ ! -d ${params.WORKDIR}/${params.RUN_NAME} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}
-        # Ensure sofia output directory exists
-        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
+        # Ensure sofia sub-cube output directory exists
+        [ ! -d ${params.WORKDIR}/${params.RUN_NAME}/${params.SOFIA_OUTPUTS_DIRNAME} ] && mkdir ${params.WORKDIR}/${params.RUN_NAME}/${params.SOFIA_OUTPUTS_DIRNAME}
         # Ensure parameter file exists
         [ ! -f ${params.SOFIA_PARAMETER_FILE} ] && \
             { echo "Source finding parameter file (params.SOFIA_PARAMETER_FILE) not found"; exit 1; }
@@ -35,15 +31,51 @@ process pre_run_dependency_check {
         """
 }
 
+// Download image cube and weights files
+process download {
+    container = params.CASDA_DOWNLOAD_IMAGE
+    containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
+
+    input:
+        val sbid
+        val check
+
+    output:
+        stdout emit: stdout
+    
+    script:
+        """
+        python3 -u /app/casda_download.py \
+            -i $sbid \
+            -o ${params.WORKDIR}/${params.RUN_NAME} \
+            -c ${params.CASDA_CREDENTIALS_CONFIG}
+        """
+}
+
+// Read the file from
+process get_image_and_weights_cube_files {
+    executor = 'local'
+
+    input:
+        val sbid
+        val download
+
+    output:
+        val image_cube, emit: image_cube
+        val weights_cube, emit: weights_cube
+
+    exec:
+        image_cube = file("${params.WORKDIR}/${params.RUN_NAME}/image*$sbid*.fits")[0]
+        weights_cube = file("${params.WORKDIR}/${params.RUN_NAME}/weight*$sbid*.fits")[0]
+}
+
 // Create scripts for running SoFiA via SoFiAX
 process s2p_setup {
-    container = params.S2P_IMAGE
+    container = params.S2P_SETUP_IMAGE
     containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
 
     input:
         val image_cube_file
-        val sofia_parameter_file_template
-        val check
 
     output:
         stdout emit: stdout
@@ -51,12 +83,12 @@ process s2p_setup {
     script:
         """
         python3 -u /app/s2p_setup.py \
-            ${params.S2P_TEMPLATE} \
-            $image_cube_file \
-            $sofia_parameter_file_template \
-            ${params.RUN_NAME} \
-            ${params.WORKDIR}/${params.RUN_NAME} \
-            ${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}
+            --config ${params.S2P_TEMPLATE} \
+            --image_cube $image_cube_file \
+            --run_name ${params.RUN_NAME} \
+            --sofia_template ${params.SOFIA_PARAMETER_FILE} \
+            --output_dir ${params.WORKDIR}/${params.RUN_NAME} \
+            --products_dir ${params.WORKDIR}/${params.RUN_NAME}/${params.SOFIA_OUTPUTS_DIRNAME}
         """
 }
 
@@ -104,7 +136,7 @@ process get_output_directory {
         val output_directory, emit: output_directory
 
     exec:
-        output_directory = "${params.WORKDIR}/${params.RUN_NAME}/${params.OUTPUT_DIR}"
+        output_directory = "${params.WORKDIR}/${params.RUN_NAME}/${params.SOFIA_OUTPUTS_DIRNAME}"
 }
 
 // ----------------------------------------------------------------------------------------
@@ -113,12 +145,13 @@ process get_output_directory {
 
 workflow source_finding {
     take: 
-        footprint
-        sofia_parameter_file
+        sbid
 
     main:
-        pre_run_dependency_check(footprint, sofia_parameter_file)
-        s2p_setup(footprint, sofia_parameter_file, pre_run_dependency_check.out.stdout)
+        pre_run_dependency_check(sbid)
+        download(sbid, pre_run_dependency_check.out.stdout)
+        get_image_and_weights_cube_files(sbid, download.out.stdout)
+        s2p_setup(get_image_and_weights_cube_files.out.image_cube)
         get_parameter_files(s2p_setup.out.stdout)
         sofia(get_parameter_files.out.parameter_files.flatten())
         get_output_directory(sofia.out.stdout.collect())

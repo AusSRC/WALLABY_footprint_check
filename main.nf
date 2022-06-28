@@ -5,10 +5,9 @@ include { source_finding } from './source_finding/main'
 include { moment0 } from './moment0/main'
 
 workflow {
-    footprint = "${params.FOOTPRINT}"
-    sofia_parameter_file = "${params.SOFIA_PARAMETER_FILE}"
+    sbid = "${params.SBID}"
 
     main:
-        source_finding(footprint, sofia_parameter_file)
+        source_finding(sbid)
         moment0(source_finding.out.output_directory)
 }
