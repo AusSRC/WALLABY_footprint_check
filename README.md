@@ -1,40 +1,41 @@
-<h1 align="center"><a href="https://aussrc.github.io/WALLABY_workflows/">WALLABY footprint check</a></h1>
+# WALLABY footprint check
 
-WALLABY survey nextflow workflow for executing a quality check pipeline on ASKAP image cube footprints. Developed by the [AusSRC](https://aussrc.org). 
+WALLABY workflow for executing a quality check pipeline on ASKAP image cube footprints. Developed by the [AusSRC](https://aussrc.org).
 
 # Overview
 
-This pipeline is the first step of data processing that is run on ASKAP data in the archive. Makes the assumption that the image files of interest are available on the system where this pipeline is executed. This code will do the following:
+Does the following
 
-1. Run the source finding application on a WALLABY footprint
-2. Run `wallmerge.py` (see [code here](https://github.com/AusSRC/pipeline_components/tree/main/pre_check)) to generate a moment 0 map of cube
+1. Download from CASDA (optional)
+2. Run source finding pipeline on footprint
+3. Generate moment 0 map of detections
 
-Once the moment 0 map is generated, a WALLABY project scientist will inspect the product and determine whether the footprint is of sufficient quality for post-processing.
+Scientists can then inspect the moment 0 map to determine whether the footprint is good quality or not to report back to CASDA for release to level 6.
 
-# Run pipeline
+# Configuration
 
-To execute the pipeline with parameter file `params.yaml` use the command below. In running the pipeline you will need to specify the `profile`, which determines the default configuration to use. The options can be found in [`nextflow.config`](nextflow.config)
+To configure the pipeline specify a `params.yaml` file with the following content
 
-```
-nextflow run https://github.com/AusSRC/WALLABY_footprint_check -r main -params-file params.yaml -profile carnaby
-```
-
-You can read about the different `nextflow` configuration options [here](https://www.nextflow.io/docs/latest/config.html#).
-
-# Parameters
-
-Each pipeline will be run with different parameters which are used to determine the footprint that is processed and the location of the output products that are created. Many parameters have default values which can be found in the [`nextflow.config`](nextflow.config). 
-
-The required parameters for each run of the pipeline are the footprint file location and the name of the run. 
+- For the `main.nf` pipeline which will download image and weights cubes from a provided SBID:
 
 ```
 {
-  "FOOTPRINT": "image.restored.i.NGC4808_B.SB37604.cube.contsub.fits",
-  "RUN_NAME": "NGC5044_2"
+  "RUN_NAME": "Test"
+  "SBID": "34302",
 }
 ```
 
-There are additional optional configuration items that users may choose to change for any given run which include
+- Or for the `from_file.nf` pipeline you will need to specify the location of these files:
+
+```
+{
+  "RUN_NAME": "Vela_B.SB33596",
+  "IMAGE_CUBE": "/mnt/shared/wallaby/data/image.restored.i.Vela_B.SB33596.cube.contsub.fits",
+  "WEIGHTS_CUBE": "/mnt/shared/wallaby/data/weights.i.Vela_B.SB33596.cube.fits",
+}
+```
+
+Some default values have been provided in the [`nextflow.config`](nextflow.config). You can update them by specifying these in the parameter file.
 
 * `WORKDIR` - parent directory for all runs of this pipeline
 * `SOFIA_PARAMETER_FILE` - `sofia` parameter file template
@@ -42,4 +43,16 @@ There are additional optional configuration items that users may choose to chang
 * `OUTPUT_DIR` - output directory of source finding and `wallmerge` products
 * `WALLMERGE_OUTPUT` - output filename for mosaicked moment 0 map
 
-We don't recommend you change the default values for other parameters in the [`nextflow.config`](nextflow.config) as they relate to the execution environment.
+
+# Execute
+
+There are two options and their corresponding main scripts:
+
+1. With download (`main.nf`)
+2. With image and weights cubes downloaded locally (`from_file.nf`)
+
+To run, use the command below and substitute `<PIPELINE>` with the main script that you wish to execute
+
+```
+nextflow run https://github.com/AusSRC/WALLABY_footprint_check -r main -main-script <PIPELINE> -params-file params.yaml -profile carnaby
+```

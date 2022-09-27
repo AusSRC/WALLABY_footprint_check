@@ -8,9 +8,6 @@ nextflow.enable.dsl = 2
 
 // Check dependencies for pipeline run
 process pre_run_dependency_check {
-    input: 
-        val sbid
-
     output:
         stdout emit: stdout
 
@@ -31,44 +28,6 @@ process pre_run_dependency_check {
         """
 }
 
-// Download image cube and weights files
-process download {
-    container = params.CASDA_DOWNLOAD_IMAGE
-    containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
-
-    input:
-        val sbid
-        val check
-
-    output:
-        stdout emit: stdout
-    
-    script:
-        """
-        python3 -u /app/casda_download.py \
-            -i $sbid \
-            -o ${params.WORKDIR}/${params.RUN_NAME} \
-            -c ${params.CASDA_CREDENTIALS_CONFIG}
-        """
-}
-
-// Read the file from
-process get_image_and_weights_cube_files {
-    executor = 'local'
-
-    input:
-        val sbid
-        val download
-
-    output:
-        val image_cube, emit: image_cube
-        val weights_cube, emit: weights_cube
-
-    exec:
-        image_cube = file("${params.WORKDIR}/${params.RUN_NAME}/image*$sbid*.fits")[0]
-        weights_cube = file("${params.WORKDIR}/${params.RUN_NAME}/weight*$sbid*.fits")[0]
-}
-
 // Create scripts for running SoFiA via SoFiAX
 process s2p_setup {
     container = params.S2P_SETUP_IMAGE
@@ -76,6 +35,8 @@ process s2p_setup {
 
     input:
         val image_cube_file
+        val weights_cube_file
+        val check
 
     output:
         stdout emit: stdout
@@ -110,7 +71,7 @@ process get_parameter_files {
 process sofia {
     container = params.SOFIA_IMAGE
     containerOptions = "--bind ${params.SCRATCH_ROOT}:${params.SCRATCH_ROOT}"
-    
+
     input:
         file parameter_file
 
@@ -120,7 +81,7 @@ process sofia {
     script:
         """
         #!/bin/bash
-        
+
         OMP_NUM_THREADS=8 sofia $parameter_file
         """
 }
@@ -144,18 +105,17 @@ process get_output_directory {
 // ----------------------------------------------------------------------------------------
 
 workflow source_finding {
-    take: 
-        sbid
+    take:
+        image_cube
+        weights_cube
 
     main:
-        pre_run_dependency_check(sbid)
-        download(sbid, pre_run_dependency_check.out.stdout)
-        get_image_and_weights_cube_files(sbid, download.out.stdout)
-        s2p_setup(get_image_and_weights_cube_files.out.image_cube)
+        pre_run_dependency_check()
+        s2p_setup(image_cube, weights_cube, pre_run_dependency_check.out.stdout)
         get_parameter_files(s2p_setup.out.stdout)
         sofia(get_parameter_files.out.parameter_files.flatten())
         get_output_directory(sofia.out.stdout.collect())
-    
+
     emit:
         output_directory = get_output_directory.out.output_directory
 }
